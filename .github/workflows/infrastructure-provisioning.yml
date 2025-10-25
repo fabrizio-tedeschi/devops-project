@@ -30,7 +30,7 @@ jobs:
         id: ssh_key
         run: |
           mkdir -p ~/.ssh
-          ssh-keygen -t ed25519 -C "github_deployment_key" -f ./github_deployment_key -N ""
+          ssh-keygen -t ed25519 -C "github_deployment_key" -f ~/.ssh/github_deployment_key -N ""
           echo "private_key<<EOF" >> $GITHUB_OUTPUT
           cat ./github_deployment_key >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
