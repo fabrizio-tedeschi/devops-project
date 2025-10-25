@@ -47,7 +47,7 @@ Terraform uses this file to create a new *AWS keypair* resource. Remember that a
 
 ### Step 3: update the private key secret
 
-* Insert the content of `deploy_key` (your private key) into a GitHub secret named `EC2_SSH_KEY`.
+* Insert the content of `deploy_key` (your private key) into a GitHub secret named `EC2_SSH_PRIVATE_KEY`.
 
 This secret allows GitHub runners to create connections to the EC2 instance.
 

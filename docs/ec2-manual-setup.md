@@ -102,7 +102,7 @@ On GitHub:
 Secrets:
 * `EC2_USER`: insert the value `ubuntu`
 * `EC2_HOST`: insert the EC2 instance public IP (the elastic IP address you previously allocated)
-* `EC2_SSH_KEY`: all the content of you `.pem` file. This secret allows GitHub runners to create connections to the EC2 instance.
+* `EC2_SSH_PRIVATE_KEY`: all the content of you `.pem` file. This secret allows GitHub runners to create connections to the EC2 instance.
 
 If you want to see the content of your `.pem` file:
 

@@ -24,7 +24,7 @@ To test automated workflows you need an AWS EC2 instance (a virtual machine with
 * Uninstalls Docker and PostgreSQL
 * Cleans EC2 opt folder
 
-> **Required secret:** `EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`.
+> **Required secret:** `EC2_SSH_PRIVATE_KEY`, `EC2_HOST`, `EC2_USER`.
 
 ### JAR workflow
 
@@ -36,7 +36,7 @@ To test automated workflows you need an AWS EC2 instance (a virtual machine with
 * Uses Ansible to setup a given EC2 instance.
 * Uses Ansible to starts the application with the correct environment configuration.
 
-> **Required secret:** `EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`.
+> **Required secret:** `EC2_SSH_PRIVATE_KEY`, `EC2_HOST`, `EC2_USER`.
 
 ### Docker workflow
 
@@ -49,7 +49,7 @@ To test automated workflows you need an AWS EC2 instance (a virtual machine with
 * Launches containers defined in `docker-compose.yml`.
 * Supports containerized applications or microservices.
 
-> **Required secret:** `EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`. Additional secrets may be needed for container configurations.
+> **Required secret:** `EC2_SSH_PRIVATE_KEY`, `EC2_HOST`, `EC2_USER`. Additional secrets may be needed for container configurations.
 
 ### Infrastructure provisioning workflow
 
