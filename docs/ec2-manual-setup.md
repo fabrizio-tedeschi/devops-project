@@ -123,4 +123,4 @@ Maybe you are thinking that setting up an EC2 instance is boring and time consum
 
 > It's a dirty job, but someones's gotta do it!
 
-Luckly, **Terraform** is here for you!
+Luckly, **Terraform** is here for you! See the [EC2 terraform setup guide](./ec2-terraform-setup.md).

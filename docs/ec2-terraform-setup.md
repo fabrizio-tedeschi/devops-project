@@ -23,40 +23,9 @@ Generate keys via your [AWS Console](https://docs.aws.amazon.com/IAM/latest/User
 
 SSH key pairs enable secure connections to your EC2 instance. The following operations allows you and your github action to add a public key to the EC2 instance and correctly connect to it when you run your workflow.
 
-### Step 1: generate a new SSH keypair
+The `infrastructure-provisioning` workflow automatically creates an SSH keypair on the GitHub runner and automatically updates all the secrets for deployment workflows.
 
-On your personal Linux terminal generate an SSH keypair using the following commands:
-
-```bash
-cd ~/.ssh
-ssh-keygen -t ed25519 -C "deploy_key" -f ./deploy_key -N ""
-```
-
-View your keys using:
-
-```bash
-cat ~/.ssh/deploy_key.pub   # Public key
-cat ~/.ssh/deploy_key       # Private key
-```
-
-### Step 2: update the public key file
-
-* Replace the content of `.ssh/github_deployment_key.pub` file in this repository using the content of your `deploy_key.pub` (your public key).
-
-Terraform uses this file to create a new *AWS keypair* resource. Remember that an *AWS keypair* must be unique, so if you previously created an *AWS keypair* with the same public key you must delete it using the AWS Management Console.
-
-### Step 3: update the private key secret
-
-* Insert the content of `deploy_key` (your private key) into a GitHub secret named `EC2_SSH_PRIVATE_KEY`.
-
-This secret allows GitHub runners to create connections to the EC2 instance.
-
->[!NOTE]
-> Copy and paste **ALL** the content of your private key file into the secret variable. Include also the following lines from the file:
->
-> `-----BEGIN OPENSSH PRIVATE KEY-----`
->
-> `-----END OPENSSH PRIVATE KEY-----`
+You can read workflow logs in order to know the updated secret values. 
 
 ## Manually trigger terraform workflow
 
@@ -69,17 +38,22 @@ On GitHub:
 
 At the end of the workflow execution you can check workflow logs and get your machine public IP.
 
-## Set up repository secrets
+## Test SSH connection to the machine
 
-If you want to run deploy workflows you need to setup some repository secrets.
+In your terminal:
 
-On GitHub:
-* Reach your forked repository
-* Go to repository **Settings** > **Secrets and variables** > **Actions**
-* Create the following repository secrets using the **New repository secret button** or update existing secrets.
+* Create a private key file, paste into it the content of actions logs and set permsission:
 
-Secrets:
-* `EC2_USER`: insert the value `ubuntu`
-* `EC2_HOST`: insert the EC2 instance public IP (the IP address in your Terraform logs)
+```bash
+cd ~/.ssh
+> deploy_key
+vim ./deploy_key
+chmod 400 ./deploy_key
+```
 
-Now you can run deployment workflows.
+* Open an SSH connection to your instance:
+
+```bash
+cd ~/.ssh
+ssh -i deploy_key ubuntu@<hostname>
+```
