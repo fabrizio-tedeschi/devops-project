@@ -61,4 +61,4 @@ To test automated workflows you need an AWS EC2 instance (a virtual machine with
 * Creates a new EC2 instance using Terraform.
 * Configures SSH access and environment variables.
 
-> **Required secrets:** `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`.
+> **Required secrets:** `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `PAT_TOKEN`.
