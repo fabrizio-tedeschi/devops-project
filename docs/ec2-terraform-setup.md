@@ -27,6 +27,18 @@ The `infrastructure-provisioning` workflow automatically creates an SSH keypair 
 
 You can read workflow logs in order to know the updated secret values. 
 
+## Create a GitHub Personal Access Token
+
+Personal Access Tokens (PAT) allows you to identify yourself whe you want to interact with the GitHub API. For example when you want to update a secret value using GitHub API.
+
+The `infrastructure-provisioning` workflow automatically updates some repository secrets, so it needs a PAT token in order to do it.
+
+On GitHub:
+* Go to **Profile** > **Settings** > **Developer settings** > **Personal Access tokens** > **Fine-grained tokens**.
+* Click on the **Generate new token** button and insert the requested information.
+* Remember to add permissions about **Seccrets** and **Actions**.
+* Copy and paste the generated token into the `PAT_TOKEN`secret of the repository.
+
 ## Manually trigger terraform workflow
 
 When you want to get an infrastructure using Terraform you can trigger the `infrastructure-provisioning` workflow.
@@ -36,13 +48,15 @@ On GitHub:
 * Select the `infrastructure-provisioning` workflow.
 * Click on the **Run workflow** button.
 
-At the end of the workflow execution you can check workflow logs and get your machine public IP.
+At the end of the workflow execution you can check workflow logs and get some informations like:
+- Your machine public IP
+- The generated keypair (public and private key)
 
 ## Test SSH connection to the machine
 
 In your terminal:
 
-* Create a private key file, paste into it the content of actions logs and set permsission:
+* Create a private key file, paste into it the content of actions logs and set correct permsission:
 
 ```bash
 cd ~/.ssh
