@@ -71,3 +71,10 @@ chmod 400 ./deploy_key
 cd ~/.ssh
 ssh -i deploy_key ubuntu@<hostname>
 ```
+
+>[!NOTE]
+> Copy and paste **ALL** the content of the log into the secret variable. Include also the following lines:
+>
+> `-----BEGIN OPENSSH PRIVATE KEY-----`
+>
+> `-----END OPENSSH PRIVATE KEY-----`

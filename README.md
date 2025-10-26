@@ -1,4 +1,4 @@
-# Product-Service CI/CD
+# Devops project
 
 This repository hosts a **sample Spring Boot web application** and demonstrates **GitHub workflows** for automated deployment using [Terraform](https://developer.hashicorp.com/terraform), [Ansible](https://docs.ansible.com/), and [Docker](https://www.docker.com/).
 
@@ -62,3 +62,7 @@ To test automated workflows you need an AWS EC2 instance (a virtual machine with
 * Configures SSH access and environment variables.
 
 > **Required secrets:** `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `PAT_TOKEN`.
+
+## Credits
+
+Java web application source code, Docker configuration files and continous integration workflows are from [product-service-ci-cd](github.com/nbicocchi/product-service-ci-cd) repository made by [Nicola Bicocchi](github.com/nbicocchi).
